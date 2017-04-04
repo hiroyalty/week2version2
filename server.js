@@ -21,12 +21,15 @@ const Schema = mongoose.Schema;
 
  const Cat = mongoose.model('Cat', catSchema);
  
- mongoose.connect('mongodb://localhost:27017/test').then(() => {
-//mongoose.connect('mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/cat').then(() => {
+ //mongoose.connect('mongodb://localhost:27017/test').then(() => {
+// VERY bad to not have db authentication on
+//mongoose.connect(`mongodb:\\${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/cat`).then(() => {
+const db = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/cat`;
+mongoose.connect(db).then(() => {
   console.log('Connected successfully.');
   //app.listen(process.env.APP_PORT);
 }, err => {
-  console.log('Connection to db failed: ' + err);
+  console.log('Connection to db failed: ' + db + ' :: ' + err);
 });
 
 app.use(express.static('admin'));
