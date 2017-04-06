@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
  
@@ -19,13 +20,13 @@ const Schema = mongoose.Schema;
   thumbnail: String
 });
 
- const Cat = mongoose.model('Cat', catSchema);
+ const Cat = mongoose.model('Cat', catSchema, 'spies');
  
  //mongoose.connect('mongodb://localhost:27017/test').then(() => {
 // VERY bad to not have db authentication on
-//mongoose.connect(`mongodb:\\${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/cat`).then(() => {
-const db = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/cat`;
-mongoose.connect(db).then(() => {
+mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/catdb`).then(() => {
+//const db = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/cat`;
+//mongoose.connect(db).then(() => {
   console.log('Connected successfully.');
   //app.listen(process.env.APP_PORT);
 }, err => {
