@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
-	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,6 +13,7 @@
     <link rel="stylesheet" href="files/css/normalize.css">
     <link rel="stylesheet" href="files/css/main.css">
     <script src="files/js/modernizr-2.8.3.min.js"></script>
+	<script src="files/main.js"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -23,47 +23,38 @@
 
 <!-- Add your site or application content here -->
 <div class="container">
-	<div class="row">
-	<div class = "btn-toolbar" role = "toolbar" aria-label="Toolbar with button groups">
-	   <div class = "btn-group" id="categories">
-		  
-	   </div>
-		<div class = "btn-group" role="toolbar" >
-			<button id="reset-button" type = "button" class="btn btn-secondary">Reset</button>
-		</div>
+	<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" href="/viewdetails.html" onclick="location.href=/viewdetails.html">View</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="/">Add</a>
+  </li>
+</ul>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <h1 class="navbar-brand mb-0">Update SpyEvent</h1>
+</nav>
+	  <form enctype="multipart/form-data" id="updatecatinfo" name="updatecatinfo" action = "/updaterecord" method = "POST">
+  <div class="form-group">
+    <label for="exampleInputCatName">Title</label>
+    <input type="text" class="form-control" name="updatecatname" id="updatecatname" aria-describedby="namehelp">
+    <small id="namehelp" class="form-text text-muted">what is your cat name</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputCatDescription">Description</label>
+    <textarea class="form-control" name="updateInputCatDescription" id="updateInputCatDescription" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Category</label>
+    <select class="form-control" name="updatecategory" id="updatecategory">
+      <option>wife</option>
+      <option>sister</option>
+      <option>friend</option>
+    </select>
 	</div>
-	</div>
-    <div class="row">
-        <div id="content" class="col ">
-            <div class="card-deck">
-
-            </div>
-        </div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
     </div>
-</div>
-<!-- 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Map</h4>
-            </div>
-            <div class="modal-body">
-                <figure>
-                    <img src="" alt="">
-                    <div id="map" class="small-map"></div>
-                </figure>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    <!--</div><!-- /.modal-dialog -->
-<!--</div><!-- /.modal -->
-
-
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
         crossorigin="anonymous"></script>
@@ -74,8 +65,11 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 
-<script src="files/main.js"></script>
 
+<!--<script
+		document.addEventListener("DOMContentLoaded", function() {
+			loadonecat();
+		)} -->
 
 
 </body>
