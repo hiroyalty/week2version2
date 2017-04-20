@@ -9,6 +9,14 @@ document.querySelector('#reset-button').addEventListener('click', () => {
     update(originalData);
 });
 
+document.querySelector('#search-button').addEventListener('click', () => {
+    window.location.href = "/searchspy.html";
+});
+
+//document.querySelector('#searchquery').addEventListener('click', () => {
+	//getSearchData();
+//});
+
 const createCard = (image, title, text) => {
     return `<img class="card-img-top" src="files/uploads/${image}" alt="">
             <div class="card-block">
@@ -77,6 +85,18 @@ const getData = () => {
         });
 };
 
+const getSearchData = () => { 
+    fetch('getcatbycategory/:category')
+        .then((response) => {
+			console.log('file loaded');
+            return response.json();
+        })
+        .then((items) => {
+            //originalData = items;
+            update(items);
+        });
+};
+
 const removeDuplicates = (myArr, prop) => {
     return myArr.filter((obj, pos, arr) => {
         return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
@@ -107,19 +127,19 @@ const update = (items) => {
 		
 		viewleg.addEventListener('click', () => {
 			console.log('clicked');
-			alert('clicked view'+ item._id);
-        });
+			alert('clicked view'+ JSON.stringify(item));
+        }); 
 		updateleg.addEventListener('click', () => {
 			//console.log('clicked');
 			//alert('clicked update'+ item._id);
 			editablecat = item;
 			//alert('editablecat'+ JSON.stringify(editablecat));
 			//loadonecat(item._id);
-			window.location.href = "/viewone.html";
+			window.location.href = "/viewone.html?item_id=" + item._id + "&title=" + item.title + "&details=" + item.details + "&category=" + item.category + "&img=" + item.thumbnail;
 		});
 		deleteleg.addEventListener('click', () => {
 			
-			deleteData(item._id);
+			deleteData(item._id, item.thumbnail);
         });
 		
 		article.appendChild(viewleg);
@@ -136,14 +156,14 @@ const loadonecat = () => {
     //  })
 	alert('editablecat'+ JSON.stringify(editablecat));
 	window.onload = function(){
-	document.getElementById('#updatecatname').value = editablecat.title;
-	document.getElementById('#updateInputCatDescription').value = editablecat.details;
-	document.getElementById('#updatecategory').value = editablecat.category;
-};
+		document.getElementById('#updatecatname').value = editablecat.title;
+		document.getElementById('#updateInputCatDescription').value = editablecat.details;
+		document.getElementById('#updatecategory').value = editablecat.category;
+	};
 };
 
-const deleteData = (itemid) => {
-    const url = 'delete/'+itemid;
+const deleteData = (itemid,thumbnail) => {
+    const url = 'delete/'+itemid+'/'+thumbnail;
 	fetch(url)
 	.then((response) => {
             return response.json();
@@ -152,11 +172,7 @@ const deleteData = (itemid) => {
             getData();
         });
 };
-
-	window.onload = function(){
-	document.getElementById('#updatecatname').value = "ginger";
-	document.getElementById('#updateInputCatDescription').value = editablecat.details;
-	document.getElementById('#updatecategory').value = editablecat.category;
-	};
+ 
 getData();
+
 //loadonecat();

@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+	head
+	meta(name= "viewport" content= "width=device-width initial-scale= 1")
+	title= !{title}
+	style
+		link(href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+	script(type='text/javascript' src='../main.js')
+	body
+		div(class="container")
+			div(class="row")
+				div(class = "btn-toolbar" role = "toolbar" aria-label="Toolbar with button groups")
+					div(class = "btn-group" role="toolbar")
+						button(id="reset-button" type = "button" class="btn btn-secondary" onclick="return deletetest_onclick()") Delete
+				nav(class="navbar navbar-light" style="background-color: #e3f2fd;")
+					h1(class="navbar-brand mb-0") !{message}

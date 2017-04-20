@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+	head
+		meta(name= "viewport" content= "width=device-width initial-scale= 1")
+		title= ''
+		style
+			link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
+			link(rel="stylesheet" href="/files/css/normalize.css")
+			link(rel="stylesheet" href="/files/css/main.css")
+		script(type='text/javascript' src='/files/js/modernizr-2.8.3.min.js')
+		script(type='text/javascript' src='/files/main2.js')
+	body
+		div(class="container")
+			div(class="row")
+				div(class = "btn-toolbar" role = "toolbar" aria-label="Toolbar with button groups")
+					div(class = "btn-group" role="toolbar")
+						button(id="reset-button" type = "button" class="btn btn-secondary" onclick="return btntest_onclick()") Reset
+				nav(class="navbar navbar-light" style="background-color: #e3f2fd;")
+					h1(class="navbar-brand mb-0") Query Result SpyEvent
+				div(id="content" class="col")
+					div(class="card-deck")
+						for cat in catList
+							img(class="card-img-top" src= "/files/uploads/"+cat.thumbnail alt="")
+							div(class="card-block")
+								h3(class="card-title")= cat.title
+								p(class="card-text")= cat.details

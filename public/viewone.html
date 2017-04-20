@@ -1,4 +1,5 @@
-<html lang="">
+<!doctype html>
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="files/css/normalize.css">
     <link rel="stylesheet" href="files/css/main.css">
     <script src="files/js/modernizr-2.8.3.min.js"></script>
-	<script src="files/main.js"></script>
+	
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -34,15 +35,18 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <h1 class="navbar-brand mb-0">Update SpyEvent</h1>
 </nav>
-	  <form enctype="multipart/form-data" id="updatecatinfo" name="updatecatinfo" action = "/updaterecord" method = "POST">
+	  <form enctype="multipart/form-data" id="updateform" name="updateform" method="GET" action="updaterecord">
+  <div class="form-group">
+    <input type="hidden" class="form-control" name="itemId" id="itemId">
+  </div>
   <div class="form-group">
     <label for="exampleInputCatName">Title</label>
     <input type="text" class="form-control" name="updatecatname" id="updatecatname" aria-describedby="namehelp">
-    <small id="namehelp" class="form-text text-muted">what is your cat name</small>
+    <small id="namehelp" class="form-text text-muted">Put new cat name</small>
   </div>
   <div class="form-group">
     <label for="exampleInputCatDescription">Description</label>
-    <textarea class="form-control" name="updateInputCatDescription" id="updateInputCatDescription" rows="3"></textarea>
+    <textarea class="form-control" name="updateDescription" id="updateDescription" rows="3"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleSelect1">Category</label>
@@ -52,6 +56,12 @@
       <option>friend</option>
     </select>
 	</div>
+  <!--
+  <div class="form-group">
+    <label for="exampleInputFile">Image</label>
+    <input type="file" class="form-control-file" name="editimagelink" id="editimagelink" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Edit image</small>
+  </div> -->
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
     </div>
@@ -65,12 +75,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 
-
-<!--<script
-		document.addEventListener("DOMContentLoaded", function() {
-			loadonecat();
-		)} -->
-
+<script src="files/main2.js"></script>
 
 </body>
 </html>

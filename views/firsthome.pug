@@ -1,0 +1,27 @@
+extends 2xlayout
+
+block content
+	div.container
+		ul(class='nav nav-pills')
+			li(class='nav-item')
+				a(class='nav-link', href='/viewdetails.html') View
+			li(class='nav-item')
+				a(class='nav-link active', href='#') Add
+		nav(class='navbar navbar-light' style='background-color: #e3f2fd')
+			h1(clss='navbar-brand mb-0') New SpyEvent
+		form(action='/yeah', method='POST')
+		div.form-group
+			label(for='catname') Title
+			input#inputcatname.form-control(type='text', placeholder='Enter Cat Name' name='title')
+		div.form-group
+			label(for='catdescription') Description
+			textarea#inputcatdescription.form-control(type='textarea', name='description' rows='3')
+		div.form-group
+			label(for='exampleSelect1') Category
+			select#catSelect1.form-control(type='select', name='category')
+				each val, index in ['wife', 'sister', 'friend']
+					option(value=val) #{val}
+		div.form-group
+			label(for='exampleInputFile') Image
+			input#exampleInputFile.form-control-file(type='file', name='imagelink')
+		button.btn.btn-primary(type='submit') Submit
